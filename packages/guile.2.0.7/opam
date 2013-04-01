@@ -1,0 +1,11 @@
+opam-version: "1"
+maintainer: "rixed-opam@happyleptic.org"
+build: [
+  ["./configure" "-prefix" prefix]
+  [make]
+  [make "install"]
+]
+remove: [
+  ["make" "uninstall"]
+]
+depends: ["pkgconfig" "libgc" "libgmp" "libiconv" "libtool" "libunistring" "libffi"]

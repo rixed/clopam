@@ -1,0 +1,11 @@
+opam-version: "1"
+maintainer: "rixed-opam@happyleptic.org"
+build: [
+  ["./config" "--prefix=%{prefix}%" "--openssldir=%{prefix}%/openssl"]
+  [make]
+  [make "install"]
+]
+remove: [
+  ["make" "uninstall"]
+]
+depends: []

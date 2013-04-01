@@ -1,0 +1,12 @@
+opam-version: "1"
+maintainer: "rixed-opam@happyleptic.org"
+build: [
+  ["./bootstrap"]
+  ["./configure" "--prefix" prefix]
+  [make]
+  [make "install"]
+]
+remove: [
+  ["ocamlfind" "remove" "clopinet"]
+]
+depends: ["ocamlfind" "owww" "batteries" "parmap" "bitstring"]
