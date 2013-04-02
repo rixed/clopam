@@ -104,7 +104,7 @@ else
 		./configure -no-tk -prefix "$ROOTFS"
 		make world.opt
 		make install
-	) > "$TMP/ocaml.build.log"
+	)
 	rm -rf "$TMP"/*
 fi
 
@@ -122,7 +122,7 @@ else
 		./configure --prefix="$ROOTFS"
 		make
 		make install
-	) > "$TMP/opam.build.log"
+	)
 	rm -rf "$TMP"/*
 fi
 
