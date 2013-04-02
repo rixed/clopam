@@ -29,7 +29,7 @@ read dummy
 
 OPAM_URL=http://www.ocamlpro.com/pub/opam-full-1.0.0.tar.gz
 OCAML_URL=http://caml.inria.fr/pub/distrib/ocaml-4.00/ocaml-4.00.1.tar.gz
-CLOPIREPO_URL=http://raw.github.com/rixed/clopam
+CLOPIREPO_URL=git://github.com/rixed/clopam.git
 
 TOPDIR="$PWD"
 ROOTFS="$TOPDIR"
