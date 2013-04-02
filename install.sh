@@ -86,11 +86,6 @@ download() {
 # INSTALLATION
 #
 
-# Check I'm where I'm supposed to be
-if ! test -d opam-repository ; then
-	die "I'm supposed to be run from the same directory where is opam-repository"
-fi
-
 mkdir -p "$TMP" "$ROOTFS"
 
 # OCAML
