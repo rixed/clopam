@@ -120,6 +120,7 @@ else
 	(
 		cd "$TMP/"$(basename "$OPAM_URL" .tar.gz)
 		./configure --prefix="$ROOTFS"
+		mkdir "$ROOTFS"/lib/ocaml/labltk # or make will fail
 		make
 		make install
 	)
