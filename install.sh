@@ -152,6 +152,9 @@ fi
 action "Using OPAM to install everything else"
 
 if "$BINDIR/opam" install all ; then
+	# Little bit of cleaning
+	rm -rf "$OPAMROOT"/repo/clopinet/tmp/* || true
+
 	# Final touch: give sniffing permissions
 	echo "Well, apparently everything went fine."
 	echo "Now you should give junkie (the sniffer) the capability to sniff network"
