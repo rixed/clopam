@@ -7,7 +7,7 @@ echo "======================="
 echo
 echo "This installer will download and compile everything that's needed to compile"
 echo "and run ClopiNet network monitoring tools. Everything will be installed where"
-echo "you run this from. No special priviledges are needed, except at the end for"
+echo "you run this from. No special privileges are needed, except at the end for"
 echo "the final touch (you will be prompted)."
 echo
 echo "The only requirements are:"
@@ -152,18 +152,22 @@ fi
 
 action "Using OPAM to install everything else"
 
-"$BINDIR/opam" install all
+if "$BINDIR/opam" install all ; then
+	# Final touch: give sniffing permissions
+	echo "Well, apparently everything went fine."
+	echo "Now you should give junkie (the sniffer) the capability to sniff network"
+	echo "packets, with this command (in root):"
+	echo
+	echo "  setcap cap_net_raw,cap_net_admin=eip $OPAMROOT/system/bin/junkie"
+	echo
+	echo
+	echo "Then you are read to run the whole system with:"
+	echo
+	echo "  $TOPDIR/clopinet"
+	echo
+else
+	echo "Installation failed."
+	echo "If you encountered downloading problems than you can retry later - this"
+	echo "installation script will skip steps that succeeded."
+fi
 
-# Final touch: give sniffing permissions
-
-echo "Well, aparently everything went fine."
-echo "Now you should give junkie (the sniffer) the capability to sniff network"
-echo "packets, with this command (in root):"
-echo
-echo "  setcap cap_net_raw,cap_net_admin=eip $OPAMROOT/system/bin/junkie"
-echo
-echo
-echo "Then you are read to run the whole system with:"
-echo
-echo "  $TOPDIR/clopinet"
-echo
