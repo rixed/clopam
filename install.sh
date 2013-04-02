@@ -18,7 +18,6 @@ echo "- the GNU make utility"
 echo "- the development files for your libc (usually packaged under libc-dev on"
 echo "  Debian like systems)"
 echo "- perl 5 (to compile openssl) and various other UNIX tools (diff, time, sed...)"
-echo "- the setcap utility to gain capability to sniff some traffic"
 echo
 echo "You will also need plenty of patience since compiling all this will take time."
 echo
@@ -159,6 +158,8 @@ if "$BINDIR/opam" install all ; then
 	echo "packets, with this command (in root):"
 	echo
 	echo "  setcap cap_net_raw,cap_net_admin=eip $OPAMROOT/system/bin/junkie"
+	echo
+	echo "Note that, on Debian systems, setcap comes with the libcap2-bin package."
 	echo
 	echo
 	echo "Then you are read to run the whole system with:"
