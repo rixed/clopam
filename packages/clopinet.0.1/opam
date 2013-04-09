@@ -9,4 +9,4 @@ build: [
 remove: [
   ["ocamlfind" "remove" "clopinet"]
 ]
-depends: ["ocamlfind" "owww" "batteries" "parmap" "bitstring"]
+depends: ["ocamlfind" "owww" "batteries" "parmap" "bitstring" "geoip"]
