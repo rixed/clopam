@@ -171,6 +171,10 @@ if "$BINDIR/opam" install all ; then
 	echo "  $TOPDIR/clopinet"
 	echo
 else
+	sleep 1
+	echo
+	echo
+	echo
 	echo "Installation failed."
 	echo "If you encountered downloading problems than you can retry later - this"
 	echo "installation script will skip steps that succeeded."
