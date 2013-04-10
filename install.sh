@@ -64,9 +64,9 @@ notice() {
 }
 
 if which wget >/dev/null 2>/dev/null ; then
-	WGET="wget --no-check-certificate --no-verbose"
+	WGET="wget --no-check-certificate --no-verbose --continue"
 elif which curl >/dev/null 2>/dev/null ; then
-	WGET="curl --insecure --remote-name"
+	WGET="curl --insecure --remote-name --silent --continue-at -"
 else
 	die "Cannot find wget nor curl"
 fi
