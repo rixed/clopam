@@ -30,6 +30,7 @@ read dummy
 OPAM_URL=http://www.ocamlpro.com/pub/opam-full-1.0.0.tar.gz
 OCAML_URL=http://caml.inria.fr/pub/distrib/ocaml-4.00/ocaml-4.00.1.tar.gz
 CLOPIREPO_URL=git://github.com/rixed/clopam.git
+GEOIPDB_URL=http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
 
 TOPDIR="$PWD"
 ROOTFS="$TOPDIR"
@@ -164,6 +165,19 @@ if "$BINDIR/opam" install all ; then
 
 	# Little bit of cleaning
 	rm -rf "$OPAMROOT"/repo/clopinet/tmp/* || true
+
+	# Install better GeoIP database
+	if ! test -e "$OPAMROOT"/system/share/GeoIP/GeoIPCity.dat ; then
+		echo "This product includes GeoLite data created by MaxMind, available from"
+		echo " <a href="http://www.maxmind.com">http://www.maxmind.com</a>."
+		echo "Installing the free City GeoIP Database"
+		download "$GEOIPDB_URL"
+		mkdir -p "$OPAMROOT"/system/share/GeoIP
+		# Notice we must rename the file or stupid GeoIP won't look for it
+		gunzip -c "$TMP"/GeoLiteCity.dat.gz > "$OPAMROOT"/system/share/GeoIP/GeoIPCity.dat
+		echo "done"
+		echo
+	fi
 
 	# Final touch: give sniffing permissions
 	echo "Well, apparently everything went fine."
