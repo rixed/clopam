@@ -152,7 +152,16 @@ fi
 
 action "Using OPAM to install everything else"
 
+clean_out() {
+	sleep 1
+	echo
+	echo
+	echo
+}
+
 if "$BINDIR/opam" install all ; then
+	clean_out
+
 	# Little bit of cleaning
 	rm -rf "$OPAMROOT"/repo/clopinet/tmp/* || true
 
@@ -166,15 +175,12 @@ if "$BINDIR/opam" install all ; then
 	echo "Note that, on Debian systems, setcap comes with the libcap2-bin package."
 	echo
 	echo
-	echo "Then you are read to run the whole system with:"
+	echo "Then you are ready to run the whole system with:"
 	echo
 	echo "  $TOPDIR/clopinet"
 	echo
 else
-	sleep 1
-	echo
-	echo
-	echo
+	clean_out
 	echo "Installation failed."
 	echo "If you encountered downloading problems than you can retry later - this"
 	echo "installation script will skip steps that succeeded."
