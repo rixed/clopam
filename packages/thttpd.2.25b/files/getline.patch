@@ -1,0 +1,22 @@
+Only in thttpd-2.25c: _
+diff -u -r thttpd-2.25b/extras/htpasswd.c thttpd-2.25c/extras/htpasswd.c
+--- thttpd-2.25b/extras/htpasswd.c	2001-12-19 01:08:08.000000000 +0100
++++ thttpd-2.25c/extras/htpasswd.c	2013-04-16 21:59:50.310395284 +0200
+@@ -49,7 +49,7 @@
+     while((line[y++] = line[x++]));
+ }
+ 
+-static int getline(char *s, int n, FILE *f) {
++static int getline_(char *s, int n, FILE *f) {
+     register int i=0;
+ 
+     while(1) {
+@@ -189,7 +189,7 @@
+     strcpy(user,argv[2]);
+ 
+     found = 0;
+-    while(!(getline(line,MAX_STRING_LEN,f))) {
++    while(!(getline_(line,MAX_STRING_LEN,f))) {
+         if(found || (line[0] == '#') || (!line[0])) {
+             putline(tfp,line);
+             continue;

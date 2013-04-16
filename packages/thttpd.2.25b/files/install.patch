@@ -1,0 +1,37 @@
+diff -u -r thttpd-2.25b/Makefile.in thttpd-2.25c/Makefile.in
+--- thttpd-2.25b/Makefile.in	2005-06-29 19:52:54.000000000 +0200
++++ thttpd-2.25c/Makefile.in	2013-04-16 22:21:24.226835248 +0200
+@@ -30,7 +30,7 @@
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+ # Pathname of directory to install the binary.
+-BINDIR = @sbindir@
++BINDIR = @bindir@
+ # Pathname of directory to install the man page.
+ MANDIR = @mandir@
+ # Pathname of directory to install the CGI programs.
+@@ -110,11 +110,11 @@
+ 
+ installthis:
+ 	-mkdir -p $(DESTDIR)$(BINDIR)
+-	$(INSTALL) -m 555 -o bin -g bin thttpd $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 555 thttpd $(DESTDIR)$(BINDIR)
+ 
+ install-man:
+ 	-mkdir -p $(DESTDIR)$(MANDIR)/man8
+-	$(INSTALL) -m 444 -o bin -g bin thttpd.8 $(DESTDIR)$(MANDIR)/man8
++	$(INSTALL) -m 444 thttpd.8 $(DESTDIR)$(MANDIR)/man8
+ 
+ installsubdirs:
+ 	for i in $(SUBDIRS) ; do ( \
+diff -u -r thttpd-2.25b/extras/Makefile.in thttpd-2.25c/extras/Makefile.in
+--- thttpd-2.25b/extras/Makefile.in	2005-06-29 19:53:20.000000000 +0200
++++ thttpd-2.25c/extras/Makefile.in	2013-04-16 22:25:42.138179035 +0200
+@@ -68,7 +68,6 @@
+ install:	all
+ 	rm -f $(BINDIR)/makeweb $(BINDIR)/htpasswd $(BINDIR)/syslogtocern
+ 	cp makeweb $(BINDIR)/makeweb
+-	chgrp $(WEBGROUP) $(BINDIR)/makeweb
+ 	chmod 2755 $(BINDIR)/makeweb
+ 	cp htpasswd $(BINDIR)/htpasswd
+ 	cp syslogtocern $(BINDIR)/syslogtocern
