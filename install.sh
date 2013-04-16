@@ -18,7 +18,8 @@ echo "- the GNU make utility"
 echo "- bison and flex (or other sufficiently good yacc and lex)"
 echo "- the development files for your libc (usually packaged under libc-dev on"
 echo "  Debian like systems)"
-echo "- perl 5 (to compile openssl) and various other UNIX tools (diff, time, sed...)"
+echo "- perl 5 (to compile openssl) and various other UNIX tools (such as diff,"
+echo "  time, sed, gunzip...)"
 echo
 echo "You will also need plenty of patience since compiling all this will take time."
 echo
@@ -76,11 +77,7 @@ download() {
 	url="$1"
 	f=$(basename "$url")
 	action "Downloading $url"
-	if test -r tmp/"$f" ; then
-		notice "Reusing tmp/$f"
-	else
-		(cd "$TMP"; $WGET "$url")
-	fi
+	(cd "$TMP"; $WGET "$url")
 }
 
 #
@@ -174,7 +171,12 @@ if "$BINDIR/opam" install all ; then
 		download "$GEOIPDB_URL"
 		mkdir -p "$OPAMROOT"/system/share/GeoIP
 		# Notice we must rename the file or stupid GeoIP won't look for it
-		gunzip -c "$TMP"/GeoLiteCity.dat.gz > "$OPAMROOT"/system/share/GeoIP/GeoIPCity.dat
+		GEOIPDB="$OPAMROOT"/system/share/GeoIP/GeoIPCity.dat
+		(
+			gunzip -c "$TMP"/GeoLiteCity.dat.gz > "$GEOIPDB" &&
+			rm -rf "$TMP"/* &&
+			echo "done"
+		) || rm -f "$GEOIPDB"
 		echo "done"
 		echo
 	fi
