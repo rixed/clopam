@@ -20,6 +20,7 @@ echo "- the development files for your libc (usually packaged under libc-dev on"
 echo "  Debian like systems)"
 echo "- perl 5 (to compile openssl) and various other UNIX tools (such as diff,"
 echo "  time, sed, gunzip...)"
+echo "- optionally, if you want netgraph chart: graphviz"
 echo
 echo "You will also need plenty of patience since compiling all this will take time."
 echo
