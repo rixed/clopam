@@ -163,7 +163,7 @@ if "$BINDIR/opam" install all ; then
 	clean_out
 
 	# Little bit of cleaning
-	rm -rf "$OPAMROOT"/repo/clopinet/tmp/* || true
+	rm -rf "$OPAMROOT"/repo/clopinet/tmp/* "$OPAMROOT"/archives/* || true
 
 	# Install better GeoIP database
 	if ! test -e "$OPAMROOT"/system/share/GeoIP/GeoIPCity.dat ; then
