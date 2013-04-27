@@ -132,7 +132,8 @@ if test -d "$OPAMROOT" ; then
 	action "OPAM is already initialized"
 else
 	action "Initializing OPAM"
-	opam init --no-setup --jobs=3
+	# Wait for opam 1.0.1 to set more jobs
+	opam init --no-setup --jobs=1
 fi
 
 eval `opam config env`
