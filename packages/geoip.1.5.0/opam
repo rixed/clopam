@@ -1,7 +1,7 @@
 opam-version: "1"
 maintainer: "rixed-opam@happyleptic.org"
 build: [
-  ["./configure" "--prefix=%{prefix}%" "CPPFLAGS=-I%{prefix}/include"]
+  ["./configure" "--prefix=%{prefix}%" "CPPFLAGS=-I%{prefix}%/include"]
   [make]
   [make "install"]
 ]
