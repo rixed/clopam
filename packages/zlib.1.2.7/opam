@@ -1,12 +1,11 @@
 opam-version: "1"
 maintainer: "rixed-opam@happyleptic.org"
 build: [
-  ["./configure" "--prefix=%{prefix}%" "CPPFLAGS=-I%{prefix}/include"]
+  ["./configure" "--prefix=%{prefix}%"]
   [make]
   [make "install"]
 ]
 remove: [
   ["make" "uninstall"]
 ]
-depends: ["zlib"]
-patches: ["getline.patch" "install.patch"]
+depends: []
