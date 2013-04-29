@@ -193,9 +193,18 @@ if "$BINDIR/opam" install all ; then
 	echo "Note that, on Debian systems, setcap comes with the libcap2-bin package."
 	echo
 	echo
-	echo "Then you are ready to run the whole system with:"
+	echo "Have a look at '$OPAMROOT/system/etc/clopinet.conf' for some customization,"
+
+	# Top level script
+	run="$TOPDIR/run"
+	echo "#!/bin/sh" > "$run"
+	echo "export LD_LIBRARY_PATH='$OPAMROOT/system/lib'" >> "$run"
+	echo ". '$OPAMROOT/etc/clopinet.conf'" >> "$run"
+	echo "'$OPAMROOT/system/bin/clopinet' start" >> "$run"
+
+	echo "then run the whole system with:"
 	echo
-	echo "  $TOPDIR/clopinet"
+	echo "  $TOPDIR/run"
 	echo
 else
 	clean_out
