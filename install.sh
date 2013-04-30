@@ -196,15 +196,18 @@ if "$BINDIR/opam" install all ; then
 	echo "Have a look at '$OPAMROOT/system/etc/clopinet.conf' for some customization,"
 
 	# Top level script
-	run="$TOPDIR/run"
-	echo "#!/bin/sh" > "$run"
-	echo "export LD_LIBRARY_PATH='$OPAMROOT/system/lib'" >> "$run"
-	echo ". '$OPAMROOT/etc/clopinet.conf'" >> "$run"
-	echo "'$OPAMROOT/system/bin/clopinet' start" >> "$run"
+	env="$TOPDIR/env"
+	echo "eval \$(OPAMROOT='$OPAMROOT' '$BINDIR/opam' config env)" > "$env"
+	echo "LD_LIBRARY_PATH='$OPAMROOT/system/lib'; export LD_LIBRARY_PATH" >> "$env"
+	echo ". '$OPAMROOT/system/etc/clopinet.conf'" >> "$env"
 
-	echo "then run the whole system with:"
+	echo "then source the toplevel environment file with:"
 	echo
-	echo "  $TOPDIR/run"
+	echo "  . $TOPDIR/env"
+	echo
+	echo "then start/stop the system with:"
+	echo
+	echo "  '$OPAMROOT/system/bin/clopinet' start|stop"
 	echo
 else
 	clean_out
