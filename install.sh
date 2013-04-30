@@ -130,6 +130,12 @@ fi
 
 if test -d "$OPAMROOT" ; then
 	action "OPAM is already initialized"
+	# OPAM fail to upgrade a repo if the tracked head was `push -f`ed
+	if test -d "$OPAMROOT/repo/clopinet/.git"; then
+		(cd "$OPAMROOT/repo/clopinet"
+		git fetch --all
+		git reset --hard origin/master)
+	fi
 else
 	action "Initializing OPAM"
 	# Wait for opam 1.0.1 to set more jobs
@@ -205,9 +211,9 @@ if "$BINDIR/opam" install all ; then
 	echo
 	echo "  . $TOPDIR/env"
 	echo
-	echo "then start/stop the system with:"
+	echo "you can then start the system with:"
 	echo
-	echo "  '$OPAMROOT/system/bin/clopinet' start|stop"
+	echo "  $OPAMROOT/system/bin/clopinet start"
 	echo
 else
 	clean_out
