@@ -2,7 +2,7 @@ opam-version: "1"
 maintainer: "rixed-opam@happyleptic.org"
 build: [
   ["./bootstrap"]
-  ["./configure" "--prefix" prefix]
+  ["./configure" "--prefix" prefix "ADD_PATH=%{prefix}%/../../bin" ]
   [make]
   [make "install"]
 ]
