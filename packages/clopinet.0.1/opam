@@ -2,7 +2,7 @@ opam-version: "1"
 maintainer: "rixed-opam@happyleptic.org"
 build: [
   ["./bootstrap"]
-  ["./configure" "--prefix" prefix "ADD_PATH=%{prefix}%/../../bin" ]
+  ["./configure" "--prefix" prefix "ADD_PATH=%{prefix}%/../../bin" "GEOIPDB=%{prefix}%/share/GeoIP/GeoIPCity.dat" ]
   [make]
   [make "install"]
 ]
