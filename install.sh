@@ -23,6 +23,9 @@ echo "  time, sed, gunzip...)"
 echo "- optionally, if you want netgraph chart: graphviz"
 echo
 echo "You will also need plenty of patience since compiling all this will take time."
+echo "Also, this is recommended to save this script output into a file in order to"
+echo "help troubleshooting should something goes wrong (using the tee command for"
+echo "instance)."
 echo
 echo "press a key to start (CTRL-C to abort)"
 read dummy
