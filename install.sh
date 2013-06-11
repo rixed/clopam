@@ -203,7 +203,8 @@ if "$BINDIR/opam" install all ; then
 	echo "Note that, on Debian systems, setcap comes with the libcap2-bin package."
 	echo
 	echo
-	echo "Have a look at '$OPAMROOT/system/etc/clopinet.conf' for some customization,"
+	echo "Have a look at '$OPAMROOT/system/etc/clopinet.conf' for some"
+	echo "customization,"
 
 	# Top level script
 	env="$TOPDIR/env"
