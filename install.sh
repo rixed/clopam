@@ -15,6 +15,7 @@ echo
 echo "- wget or curl and a network connection to fetch packages"
 echo "- the complete GNU C Compiler (gcc + gas + binutils) (reasonably up to date)"
 echo "- the GNU make utility"
+echo "- the rsync utility"
 echo "- bison and flex (or other sufficiently good yacc and lex)"
 echo "- the development files for your libc (usually packaged under libc-dev on"
 echo "  Debian like systems)"
