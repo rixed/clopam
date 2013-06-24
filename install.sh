@@ -208,7 +208,8 @@ if "$BINDIR/opam" install all ; then
 
 	# Top level script
 	env="$TOPDIR/env"
-	echo "eval \$(OPAMROOT='$OPAMROOT' '$BINDIR/opam' config env)" > "$env"
+	echo "OPAMROOT='$OPAMROOT'; export OPAMROOT" > "$env"
+	echo "eval \$('$BINDIR/opam' config env)" >> "$env"
 	echo "LD_LIBRARY_PATH='$OPAMROOT/system/lib'; export LD_LIBRARY_PATH" >> "$env"
 	echo ". '$OPAMROOT/system/etc/clopinet.conf'" >> "$env"
 
